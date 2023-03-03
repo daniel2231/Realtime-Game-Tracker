@@ -1,10 +1,12 @@
-<<<<<<< Updated upstream
-import React, { Fragment, useEffect, useState } from 'react';
+import React, { Fragment, useEffect, useState, useContext } from 'react';
+import { SocketContext } from '../context/socketio';
+import { useNavigate } from 'react-router-dom';
 
 export default function Host() {
 	const [data, setData] = useState({});
-  const [loading, setLoading] = useState(true);
-
+	const [loading, setLoading] = useState(true);
+	const socket = useContext(SocketContext);
+	const navigate = useNavigate();
 
 	useEffect(() => {
 		fetch('http://localhost:8000/game/init', {
@@ -15,7 +17,17 @@ export default function Host() {
 				setData(response);
 				setLoading(false);
 			});
-	}, []);
+
+		socket.on('gameReady', (data) => {
+			console.log(data);
+			if (data) {
+				navigate('/host/prepare');
+			}
+		});
+		return () => {
+			socket.off('gameReady');
+		};
+	}, [socket]);
 
 	if (loading) {
 		return <p>로딩중...</p>;
@@ -28,17 +40,4 @@ export default function Host() {
 			</Fragment>
 		);
 	}
-=======
-import { Fragment } from "react";
-
-export default function Host() {
-  const num = Math.floor(Math.random() * (9999 - 0) + 1); //임시!! 0~9999 숫자 랜덤 생성
-  return (
-    <Fragment>
-      <h1>A팀</h1>
-      <div>참가코드: {num}</div>
-      <p>참가 대기 중...</p>
-    </Fragment>
-  );
->>>>>>> Stashed changes
 }
