@@ -1,36 +1,39 @@
-import { Fragment, useState } from "react";
+import { Fragment, useEffect, useState } from "react";
 
 export default function GamePrepare() {
-  const [counter, setCounter] = useState(1);
+  const [player, setPlayer] = useState(1);
   const [ready, setReady] = useState(false);
 
-  const plusHanler = () => {
-    setCounter(counter + 1);
+  useEffect(() => {
+    if (ready) {
+      console.log("서버로 준비 : " + ready + "됨 전송");
+      console.log("서버로 인원수 : " + player + " 전송");
+      //서버로 데이터 전송해야하는 위치
+    }
+  }, [ready, player]);
+
+  const plusHandler = () => {
+    setPlayer(player + 1);
   };
 
-  const minusHanler = () => {
-    if (counter > 1) {
-      setCounter(counter - 1);
+  const minusHandler = () => {
+    if (player > 1) {
+      setPlayer(player - 1);
     }
   };
 
   const readyHandler = () => {
     setReady(!ready);
-    console.log(ready);
-    if (ready) {
-      console.log("서버로 준비됨 전송");
-      console.log("서버로 인원수 " + counter + " 전송");
-    }
   };
 
   return (
     <Fragment>
       <h1>인원수 설정</h1>
-      <button onClick={minusHanler} disabled={ready ? true : false}>
+      <button onClick={minusHandler} disabled={ready ? true : false}>
         -
       </button>
-      {counter}
-      <button onClick={plusHanler} disabled={ready ? true : false}>
+      {player}
+      <button onClick={plusHandler} disabled={ready ? true : false}>
         +
       </button>
       <button

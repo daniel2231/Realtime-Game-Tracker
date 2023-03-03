@@ -1,6 +1,7 @@
 import React, { Fragment } from 'react';
 
 export default function Guest() {
+<<<<<<< Updated upstream
 	const onSubmitHandler = (event) => {
 		//참가 버튼 클릭시 실행
 		event.preventDefault();
@@ -28,4 +29,22 @@ export default function Guest() {
 			</form>
 		</Fragment>
 	);
+=======
+  const onSubmitHandler = (event) => {
+    //참가 버튼 클릭시 실행
+    event.preventDefault();
+    //서버로 post & get.
+    //코드와 일치하는 DB 있으면 참가
+    console.log("server post & get");
+  };
+  return (
+    <Fragment>
+      <h1>B팀</h1>
+      <form onSubmit={onSubmitHandler}>
+        <input type="number" />
+        <button>참가</button>
+      </form>
+    </Fragment>
+  );
+>>>>>>> Stashed changes
 }
