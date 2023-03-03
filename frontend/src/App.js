@@ -1,25 +1,12 @@
-import logo from './logo.svg';
-import './App.css';
+import { Link } from "react-router-dom";
+import { Fragment } from "react";
 
-function App() {
+export default function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Fragment>
+      <h1>Airsoft Game Manager</h1>
+      <Link to="/host">게임 생성</Link>
+      <Link to="/guest">게임 참가</Link>
+    </Fragment>
   );
 }
-
-export default App;
