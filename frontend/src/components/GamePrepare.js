@@ -5,10 +5,10 @@ export default function GamePrepare() {
   const [ready, setReady] = useState(false);
 
   useEffect(() => {
+    //[서버, GET] : 어느 팀인지
+    //const team = 서버에서 받은 팀
     if (ready) {
-      console.log("서버로 준비 : " + ready + "됨 전송");
-      console.log("서버로 인원수 : " + player + " 전송");
-      //서버로 데이터 전송해야하는 위치
+      //[서버, POST] : ready 상태, 인원수
     }
   }, [ready, player]);
 
@@ -29,6 +29,7 @@ export default function GamePrepare() {
   return (
     <Fragment>
       <h1>인원수 설정</h1>
+      <h2> {/*team*/}팀 입니다. </h2>
       <button onClick={minusHandler} disabled={ready ? true : false}>
         -
       </button>

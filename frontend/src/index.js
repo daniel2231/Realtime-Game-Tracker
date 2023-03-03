@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom/client';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import './index.css';
 import App from './App';
-import Guest from './components/Guest';
+import Guest from './components/Guest';
 import Host from './components/Host';
 import GamePrepare from './components/GamePrepare';
 import InGame from './components/InGame';
@@ -17,8 +17,10 @@ root.render(
 				<Route path={'/'} element={<App />} />
 				<Route path={'/host'} element={<Host />} />
 				<Route path={'/guest'} element={<Guest />} />
-				<Route path={'/gameprepare'} element={<GamePrepare />} />
-				<Route path={'/ingame'} element={<InGame />} />
+				<Route path={'/host/gameprepare'} element={<GamePrepare />} />
+				<Route path={'/guest/gameprepare'} element={<GamePrepare />} />
+				<Route path={'/host/ingame'} element={<InGame />} />
+				<Route path={'/guest/ingame'} element={<InGame />} />
 			</Routes>
 		</BrowserRouter>
 	</SocketContext.Provider>
